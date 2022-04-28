@@ -1,18 +1,24 @@
-from wsgiref.simple_server import make_server
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import settings
 from puller import FramesCatalog
 
 
-def my_app(environ, start_response):
-    status = '200 OK'
-    headers = [('Content-type', 'application/json; charset=utf-8')]
-    start_response(status, headers)
-    response = FramesCatalog().get_frames_json()
+class MyBaseHTTPRequestHandler(BaseHTTPRequestHandler):
 
-    return [response.encode()]
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/json')
+        self.end_headers()
+        response = FramesCatalog().get_frames_json()
+        self.wfile.write(response.encode())
+
+
+def run(server_class=HTTPServer, handler_class=MyBaseHTTPRequestHandler):
+    server_address = (settings.HOST, settings.PORT)
+    httpd = server_class(server_address, handler_class)
+    httpd.serve_forever()
 
 
 if __name__ == '__main__':
-    with make_server(settings.HOST, settings.PORT, my_app) as srv:
-        srv.serve_forever()
+    run()
