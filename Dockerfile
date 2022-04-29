@@ -9,4 +9,4 @@ COPY *.py ./
 ARG api_key
 ENV API_KEY $api_key
 
-ENTRYPOINT ["gunicorn"  , "-b", "0.0.0.0:8123", "server:application"]
+ENTRYPOINT ["gunicorn"  , "-b", "0.0.0.0:8080", "server:application"]
