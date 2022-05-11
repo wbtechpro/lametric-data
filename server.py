@@ -1,10 +1,6 @@
 from puller import FramesCatalog
 
 
-def test():
-    return '111'
-
-
 URLS = {'/finolog': FramesCatalog().get_frames_json}
 
 
