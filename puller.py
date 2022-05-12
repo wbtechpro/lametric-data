@@ -143,7 +143,8 @@ class FinologBiz(BaseFinologBiz):
                 transactions_by_month[date.month] += value
         return transactions_by_month
 
-    def _get_current_month_transactions_sum(self) -> int: # in thousands
+    def _get_current_month_transactions_sum(self) -> float:  # in thousands
+        current_year = datetime.today().year
         current_month = datetime.today().month
 
         get_params = dict(status='regular', category_type='in')
@@ -156,11 +157,13 @@ class FinologBiz(BaseFinologBiz):
 
         for transaction in self.get_transactions_response(**get_params).json():
             value, date = transaction['value'], datetime.strptime(transaction['date'], '%Y-%m-%d %H:%M:%S')
-            if date.month == current_month:
+            if date.year == current_year and date.month == current_month:
                 month_transaction_sum += value
+                print(month_transaction_sum)
         return month_transaction_sum / 1000
 
-    def _get_current_month_goal_income(self) -> int: # in thousands
+    def _get_current_month_goal_income(self) -> float:  # in thousands
+        current_year = datetime.today().year
         current_month = datetime.today().month
 
         get_params = dict(status='planned', category_type='in')
@@ -173,7 +176,7 @@ class FinologBiz(BaseFinologBiz):
 
         for transaction in self.get_transactions_response(**get_params).json():
             value, date = transaction['value'], datetime.strptime(transaction['date'], '%Y-%m-%d %H:%M:%S')
-            if date.month == current_month:
+            if date.year == current_year and date.month == current_month:
                 month_transaction_sum += value
         return month_transaction_sum / 1000
 
