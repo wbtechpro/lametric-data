@@ -18,7 +18,7 @@ def data_base(environ, insert=None, ):
                     "'name' VARCHAR(50),"
                     "'value' INTEGER) ")
         for key, value in insert.items():
-            if isinstance(value, int):
+            if isinstance(value, str):
                 cur.execute(f"INSERT INTO {table_name} VALUES (?, ?)", (key, value,))
                 conn.commit()
             elif isinstance(value, dict):

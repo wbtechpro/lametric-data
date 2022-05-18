@@ -15,4 +15,4 @@ def marketing_recruiting(values):
                 icon += 1
                 for i, x in value:
                     data.append({'text': '{} {}'.format(i, x)})
-    return json.dumps(dict(frames=data))
+    return json.dumps(dict(frames=data), ensure_ascii=False)
