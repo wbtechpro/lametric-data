@@ -141,7 +141,7 @@ class FinologBiz(BaseFinologBiz):
         transactions_by_month = {month: 0 for month in self.MONTHS_NUMBERS}
         current_year = datetime.today().year
 
-        get_params = dict(status='regular', category_type='in')
+        get_params = dict(category_type='in')
         if hasattr(self, 'category_ids'):
             get_params['category_ids'] = self.category_ids
         if hasattr(self, 'account_ids'):
