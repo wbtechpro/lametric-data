@@ -119,7 +119,7 @@ class FinologBiz(BaseFinologBiz):
         current_year = datetime.today().year
         current_month = datetime.today().month
 
-        get_params = dict(status='planned', category_type='in')
+        get_params = dict(category_type='in')
         if hasattr(self, 'category_ids'):
             get_params['category_ids'] = self.category_ids
         if hasattr(self, 'account_ids'):
@@ -134,20 +134,7 @@ class FinologBiz(BaseFinologBiz):
         return month_transaction_sum / 1000
 
     def _get_income_transactions_sum_in_current_year(self) -> int:  # in thousands
-        transactions_by_month = {month: 0 for month in self.MONTHS_NUMBERS}
-        current_year = datetime.today().year
-
-        get_params = dict(category_type='in')
-        if hasattr(self, 'category_ids'):
-            get_params['category_ids'] = self.category_ids
-        if hasattr(self, 'account_ids'):
-            get_params['account_ids'] = self.account_ids
-
-        for transaction in self.get_transactions_response(**get_params).json():
-            value, date = transaction['value'], datetime.strptime(transaction['date'], '%Y-%m-%d %H:%M:%S')
-            if date.year == current_year:
-                transactions_by_month[date.month] += value
-        return sum(transactions_by_month.values()) / 1000
+        return sum(self._get_income_transactions_sum_by_month_in_current_year().values()) / 1000
 
     @lru_cache()
     def _get_income_transactions_sum_by_month_in_current_year(self) -> dict:
