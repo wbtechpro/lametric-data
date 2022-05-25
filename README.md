@@ -18,7 +18,7 @@ docker build \
 ##### How to run and daemonize container with outer TCP port 8123 
 
 ```
-sudo docker run -d -p 8123:8088 lametric:v1
+sudo docker run -d -p 8123:8080 lametric:v1
 ```
 
 
