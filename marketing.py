@@ -10,7 +10,7 @@ def marketing_recruiting(values, goals):
             data.append({"goalData": {"start": 0,
                                       "current": item[1],
                                       "end": goals[item[0]],
-                                      "unit": item[0]},
+                                      "unit": ' {}'.format(item[0])},
                          'icon': icon})
         elif isinstance(item, dict):
             for key, value in item.items():
@@ -19,5 +19,5 @@ def marketing_recruiting(values, goals):
                     data.append({"goalData": {"start": 0,
                                               "current": x,
                                               "end": goals[i],
-                                              "unit": i}, 'icon': icon})
+                                              "unit": ' {}'.format(i)}, 'icon': icon})
     return json.dumps(dict(frames=data), ensure_ascii=False)

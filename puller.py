@@ -183,7 +183,8 @@ class FramesCatalog:
 
     def get_frames_data(self):
         #  unpack nested lists:
-        frames = [frame for sublist in [biz.get_lametric_frames() for biz in self.biz_bunch] for frame in sublist]
+        frames = ([{'text': 'FINANCE', 'icon': settings.FINOLOG_BIZ_SETTINGS[0]['icon']}] +
+                  [frame for sublist in [biz.get_lametric_frames() for biz in self.biz_bunch] for frame in sublist])
         return dict(frames=frames)
 
     def get_frames_json(self):
