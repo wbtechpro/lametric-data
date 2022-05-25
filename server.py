@@ -21,7 +21,7 @@ def application(environ, start_response):
             if environ['PATH_INFO'] == '/finolog':
                 response = [current_handler().encode()]
             else:
-                response = [current_handler(data_base(environ)).encode()]
+                response = [current_handler(*data_base(environ)).encode()]
         elif environ['PATH_INFO'] in POST_URLS:
             status = '200 OK'
             start_response(status, headers)
