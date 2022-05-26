@@ -1,7 +1,7 @@
 import json
 
 
-def marketing_recruiting(values, goals):
+def marketing_recruiting(values, goals_emoji):
     data = []
     keys = list(*values.keys())
     data.append({'text': keys[0], 'icon': (icon := keys[1])})
@@ -9,8 +9,8 @@ def marketing_recruiting(values, goals):
         if isinstance(item, tuple):
             data.append({"goalData": {"start": 0,
                                       "current": item[1],
-                                      "end": goals[item[0]],
-                                      "unit": ' {}'.format(item[0])},
+                                      "end": goals_emoji[item[0]][0],
+                                      "unit": ' {}'.format(goals_emoji[item[0]][1])},
                          'icon': icon})
         elif isinstance(item, dict):
             for key, value in item.items():
@@ -18,6 +18,6 @@ def marketing_recruiting(values, goals):
                 for i, x in value:
                     data.append({"goalData": {"start": 0,
                                               "current": x,
-                                              "end": goals[i],
-                                              "unit": ' {}'.format(i)}, 'icon': icon})
+                                              "end": goals_emoji[i][0],
+                                              "unit": ' {}'.format(goals_emoji[i][1])}, 'icon': icon})
     return json.dumps(dict(frames=data), ensure_ascii=False)
