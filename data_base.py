@@ -56,23 +56,23 @@ def data_base(environ, insert=None, ):
             create_insert_table('RECRUITING')
     else:
         if environ['PATH_INFO'] == '/marketing':
-            return get_data('MARKETING', 7734), {'Drfts': (1, 'U+1F4C4'),
-                                                 'Pstd': (1, 'U+2705'),
-                                                 'Psts': (4, 'U+1F17F'),
-                                                 'K-Psts': (1, 'U+1F4DD'),
-                                                 'New': (3, 'U+1F195'),
-                                                 'InRttn': (6, 'U+1F141'),
-                                                 'KPSnd': (1, 'U+1F4E4'),
-                                                 'Clsd': (0, 'U+1F512'),
-                                                 'NwUsf': (1, 'U+1F199'),
-                                                 'Trfc': (614, 'U+1F143')}
+            return get_data('MARKETING', 7734), {'Drfts': (1, '\U0001F4C4'),
+                                                 'Pstd': (1, '\U0001F51D'),
+                                                 'Psts': (4, '\U0001F17F'),
+                                                 'K-Psts': (1, '\U0001F4DD'),
+                                                 'New': (3, '\U0001F195'),
+                                                 'InRttn': (6, '\U0001F141'),
+                                                 'KPSnd': (1, '\U0001F4E4'),
+                                                 'Clsd': (0, '\U0001F512'),
+                                                 'NwUsf': (1, '\U0001F199'),
+                                                 'Trfc': (614, '\U0001F143')}
         elif environ['PATH_INFO'] == '/recruiting':
-            return get_data('RECRUITING', 294), {'New': (25, 'U+1F195'),
-                                                 'Rtn': (10, 'U+1F141'),
-                                                 'Hired': (10, 'U+2714'),
-                                                 'NwAds': (10, 'U+1F199'),
-                                                 'VacPrgrs': (10, 'U+1F504'),
-                                                 'Back': (10, 'U+1F519'),
-                                                 'Front': (10, 'U+1F5A5'),
-                                                 'NoCd': (10, 'U+1F527')}
+            return get_data('RECRUITING', 294), {'New': (25, '\U0001F195'),
+                                                 'Rtn': (10, '\U0001F141'),
+                                                 'Hired': (1, '\U0001F91D'),
+                                                 'NwAds': (1, '\U0001F199'),
+                                                 'VacPrgrs': (1, '\U0001F504'),
+                                                 'Back': (10, '\U0001F519'),
+                                                 'Front': (10, '\U0001F5A5'),
+                                                 'NoCd': (10, '\U0001F527')}
     conn.close()
