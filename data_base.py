@@ -69,9 +69,9 @@ def data_base(environ, insert=None, ):
         elif environ['PATH_INFO'] == '/recruiting':
             return get_data('RECRUITING', 294), {'New': (25, '\U0001F195'),
                                                  'Rtn': (10, '\U0001F141'),
-                                                 'Hired': (10, '\U0001F91D'),
-                                                 'NwAds': (10, '\U0001F199'),
-                                                 'VacPrgrs': (10, '\U0001F504'),
+                                                 'Hired': (1, '\U0001F91D'),
+                                                 'NwAds': (1, '\U0001F199'),
+                                                 'VacPrgrs': (1, '\U0001F504'),
                                                  'Back': (10, '\U0001F519'),
                                                  'Front': (10, '\U0001F5A5'),
                                                  'NoCd': (10, '\U0001F527')}
