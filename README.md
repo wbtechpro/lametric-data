@@ -23,7 +23,7 @@ sudo docker run -d -p 8123:8080 lametric:v1
 
 
 The application runs on the wbtech.pro server, connected at wbtech.pro/lametric_data.
-The Lametric clock sends a request to this address, the application polls the Finolog server and generates a json response for the clock on the fly without storing data in files. On the server, the application runs on nginx on port 8123.
+The Lametric clock sends a request to this address, the application polls Finolog server and generates a json response for the clock on the fly without storing data in files. On the server, the application runs on nginx on port 8123.
 
 ##### Finolog screen
 
