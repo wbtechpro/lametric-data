@@ -1,5 +1,5 @@
 # data_for_Lametric
-Server application for fetching data from finolog.ru and represent it for Lametric in json
+Server application for fetching data from Finolog.ru and represent it for Lametric in json
 
 ##### How to build docker image
 
@@ -22,24 +22,23 @@ sudo docker run -d -p 8123:8080 lametric:v1
 ```
 
 
-Приложение работает на сервере wbtech.pro, подключено по адресу wbtech.pro/lametric_data. 
-Часы ламетрика посылают запрос на этот адрес, приложение опрашивает сервера финолога и формируют json-ответ для часов "на лету" без хранения данных в файлах. 
-На сервере приложение работает по nginx на 8123 порту.
+The application runs on the wbtech.pro server, connected at wbtech.pro/lametric_data.
+The Lametric clock sends a request to this address, the application polls Finolog server and generates a json response for the clock on the fly without storing data in files. On the server, the application runs on nginx on port 8123.
 
-##### Экран finolog
+##### Finolog screen
 
-Ссылка:
+Link:
 1. [json finolog](http://172.104.205.95:8123/finolog)
 
-Изменения, внесенные в код этого экрана Ламетрики (в файл `piller.py`), отображаются на сайте сразу.
+Changes made to the code for this Lametrics screen (in the `puller.py` file) are displayed on the site immediately.
 
 
-##### Как отобразить изменения экранов marketing и recruiting
+##### How to display marketing and recruiting screen changes
 
-Ссылки:
+Links:
 2. [json marketing](http://172.104.205.95:8123/marketing)
 3. [json recruiting](http://172.104.205.95:8123/recruiting)
 
-Эти экраны Ламетрики берут данные через Zapier. Как следствие, изменения в коде этих экранов (в файлах `marketing.py` и `data_base.py`) не отображаются на сайте сразу после заливки кода на сервер.
+These Lametrics screens take data through Zapier. As a result, changes in the code of these screens (in the `marketing.py` and `data_base.py` files) are not displayed on the site immediately after uploading the code to the server.
 
-Для того, чтобы такие изменения отразились в json`е, необходим запуск соответствующих запов - либо автоматический, либо ручной. Сейчас запы автоматически срабатывают утром в субботу.
+In order for such changes to be reflected in json, it is necessary to launch the corresponding commands - either automatic or manual. Currently, the zaps are automatically triggered on Saturday mornings.
